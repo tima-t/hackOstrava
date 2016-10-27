@@ -64,7 +64,12 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
           controller: 'PlaylistsCtrl'
         }
       }
-    });
+    })
+		.state('starter',{
+			url:'/starter',
+			controller: 'StarterCtrl'
+		})
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/add_transaction');
+  $urlRouterProvider.otherwise('/starter');
 });
