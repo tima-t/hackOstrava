@@ -61,7 +61,6 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
       views: {
         'menuContent': {
           templateUrl: 'templates/budget.html',
-          controller: 'PlaylistsCtrl'
         }
       }
     })
