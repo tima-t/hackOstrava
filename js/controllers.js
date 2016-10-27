@@ -53,4 +53,43 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+})
+
+.controller('StarterCtrl', function($scope, LoginService ,$timeout, $ionicLoading, $state,sharedResource,$ionicHistory, $ionicPlatform, $ionicPopup) {
+	window.localStorage.removeItem('hasPublished');
+	if (window.localStorage.getItem('username') && window.localStorage.getItem('password')) {
+		LoginService.loginUser(window.localStorage.getItem('username'),  window.localStorage.getItem('password'))
+		.then(
+			function(data){
+				sharedResource.addItem('word_info',data.content.last_word);
+				$state.go('tab.word');
+			}
+			,function(error){
+				$state.go('login');
+			}
+		)
+	}
+	else{
+		$state.go('login');
+	}
+
+	//handle back button
+	$ionicPlatform.registerBackButtonAction(function(event) {
+		if (location.hash === "#/login" || location.hash === "#/tab/word" )
+		{ // your check here
+			$ionicPopup.confirm({
+				title: 'System warning',
+				template: 'are you sure you want to exit?'
+			}).then(
+				function(res) {
+					if (res) {
+						ionic.Platform.exitApp();
+					}
+				})
+		}
+		else{
+			$ionicHistory.goBack();
+		}
+	}, 100);
+
+})
