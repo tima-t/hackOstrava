@@ -1,1 +1,23 @@
 /* Empty. Add your own CSS if you like */
+
+.bodyCenter {
+    padding-top: 80px;
+}
+
+.paddingStCenter {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 20%;
+      padding-right: 20%;
+}
+
+.paddingStButton {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 45%;
+      padding-right: 20%;
+}
+
+.noBorder {
+      border-style: none;
+}
