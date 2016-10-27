@@ -18,14 +18,16 @@ var services = angular.module('starter.services',[])
 						}
 						$http(req).then(
 							function(resp){
-								if(resp.response && response.status == 'OK' ){
+								console.log(resp.data.response);
+								if(resp.data.response && resp.data.response.status == 'OK' ){
 									console.log("response");
-									window.localStorage.setItem("token", resp.token);
+									window.localStorage.setItem("token",resp.data.response.token);
 									window.localStorage.setItem("username", name);
 									window.localStorage.setItem("password", pw);
 									deferred.resolve(resp.data);
 								}
 								else{
+									console.log(error);
 									console.log("error");
 								deferred.reject(resp.data);
 								}
