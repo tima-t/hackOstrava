@@ -1,5 +1,5 @@
 <ion-view view-title="Add Transaction">
-  <ion-content class="bodyCenter">
+  <ion-content class="bodyStyle">
     <div class="list">
 
       <div class="item item-input-inset paddingStCenter noBorder">
@@ -17,8 +17,16 @@
           <input type="text" placeholder="Category">
         </label>
       </div>
-      <div class="item item-input-inset paddingStButton noBorder">
-        <button class="button button-small">
+      <div class="item item-input-inset noBorder scanButtonDiv">
+        <button class="button button-positive scanBarcodeButton lightBlue noMinHeight">
+          Scan Barcode
+        </button>
+        <button class="button button-positive lightBlue noMinHeight">
+          Use Voice
+        </button>
+      </div>
+      <div class="item item-input-inset noBorder ">
+        <button class="button button-positive styleSubmitButton darkYellow">
           Submit
         </button>
       </div>
