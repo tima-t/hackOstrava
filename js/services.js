@@ -10,7 +10,7 @@ var services = angular.module('starter.services',[])
 						{
  							method: 'Get',
  							url: api+'/login',
-							params{
+							params;{
       				"userid":name,
       				"password":pw
 						},
