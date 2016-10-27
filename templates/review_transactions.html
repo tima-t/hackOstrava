@@ -1,5 +1,12 @@
-<ion-view view-title="Review Transaction">
+<ion-view view-title="Review Transaction" ng-init="init()">
   <ion-content>
       <h1>Review Transaction</h1>
-  </ion-content>
+			<div class='center sentenceWrapper' ng-repeat="transaction in data.transactions">
+					<h2 class="mainCont" style="font-size:30px!important;" ><i>{{transaction.description}}</i></h2>
+					<p class= "mainCont" style="font-size:20px!important;">{{transactions.noramlizedDate}}</p>
+					<p class= "mainCont" style="font-size:20px!important;">Rating: {{transaction.type}}</p>
+					<p class= "mainCont" style="font-size:20px!important;">Rating: {{transaction.tags}}</p>
+					<p class= "mainCont" style="font-size:20px!important;">Rating: {{transaction.amount}}</p>
+			</div>
+		 </ion-content>
 </ion-view>
