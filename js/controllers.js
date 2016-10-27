@@ -14,6 +14,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('transactionsCtrl', function($scope,$state,sharedResource,$ionicPopup,$ionicTabsDelegate,$ionicLoading,TransactionsService) {
+	//reload
 	$scope.$on("$ionicView.beforeEnter", function(event) {
 		$scope.data={};
 		$scope.data.numTransactions = sharedResource.getItem('numTransactions');
@@ -22,7 +23,7 @@ angular.module('starter.controllers', [])
 
 
 	$scope.init = function(){
-
+		$scope.data={};
 		TransactionsService.getLatest()
 		.then(
 			function(dataTrans) {
@@ -39,4 +40,18 @@ angular.module('starter.controllers', [])
 			}
 		)
 	}
+})
+.controller('addTransCtrl', function($scope,$state,sharedResource,$ionicPopup,$ionicTabsDelegate,$ionicLoading,TransactionsService,$cordovaBarcodeScanner) {
+	//reload
+	$scope.scanBarcode = function() {
+        $cordovaBarcodeScanner.scan().then(function(imageData) {
+            alert(imageData.text);
+            console.log("Barcode Format -> " + imageData.format);
+            console.log("Cancelled -> " + imageData.cancelled);
+						console.log(imageData);
+        }, function(error) {
+            console.log("An error happened -> " + error);
+        });
+    };
+
 })

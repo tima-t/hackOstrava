@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers','starter.services','ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -27,7 +27,8 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
     url: '/add_transaction',
     views: {
       'menuContent': {
-        templateUrl: 'templates/add_transaction.html'
+        templateUrl: 'templates/add_transaction.html',
+				controller: 'addTransCtrl'
       }
     }
   })
