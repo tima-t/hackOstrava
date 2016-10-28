@@ -49,48 +49,6 @@ angular.module('starter.controllers', [])
 	}
 })
 
-.controller('budgetCtrl', function($scope,$state,sharedResource,$ionicPopup,$ionicTabsDelegate,$ionicLoading,TransactionsService,$cordovaBarcodeScanner,barcodeService,$ionicPopup) {
-
-      $scope.data={};
-
-	$scope.$on("$ionicView.beforeEnter", function(event) {
-      $scope.data.numTransactions = sharedResource.getItem('numTransactions');
-      $scope.data.transactions = sharedResource.getItem('transactions');
-
-       var trs = $scope.data.transactions;
-        var tags = {};
-        var count = 0;
-        var currTag = "";
-
-        for(var tr in trs) {
-
-            currTag = trs[tr].tags;
-
-            if(tags[currTag]){
-                tags[currTag] += trs[tr].amount;
-            }
-            else {
-                tags[currTag] = trs[tr].amount;
-            }
-        }
-
-        console.log("tags : " + tags);
-
-        var keys = [];
-        var values = [];
-
-        for(var i in tags) {
-          keys.push(i);
-          values.push(tags[i]);
-        }
-        console.log("labs : " + keys);
-        console.log("labs : " + values);
-
-        $scope.data.labels = keys;
-        $scope.data.data = values;
-	})
-
-})
 .controller('addTransCtrl', function($scope,$state,sharedResource,$ionicPopup,$ionicTabsDelegate,$ionicLoading,TransactionsService,$cordovaBarcodeScanner,barcodeService,$ionicPopup) {
 	//reload
 
@@ -171,21 +129,72 @@ angular.module('starter.controllers', [])
 })
 
 .controller('budgetCtrl', function($scope,$state,sharedResource,$ionicPopup,$ionicTabsDelegate,$ionicLoading,budgetService) {
+  $scope.data={};
+
 	$scope.$on("$ionicView.beforeEnter", function(event) {
-	  $scope.init();
-		$scope.data={};
 		$scope.data.numTransactions = sharedResource.getItem('numTransactions');
 		$scope.data.transactions = sharedResource.getItem('transactions');
 	})
 
-	$scope.init = function(){
+  	$scope.showChart = function() {
+
+          var balance = document.getElementById("budgetBalance");
+          balance.setAttribute("style", balance.getAttribute("style") + " display:hidden;");
+
+  	      var chart = document.getElementById("canvasChart");
+    			chart.setAttribute("style", chart.getAttribute("style") + " display:block;");
+
+  	      var trs = $scope.data.transactions;
+          var tags = {};
+          var count = 0;
+          var currTag = "";
+
+          for(var tr in trs) {
+
+              currTag = trs[tr].tags;
+
+              if(tags[currTag]){
+                  tags[currTag] += trs[tr].amount;
+              }
+              else {
+                  tags[currTag] = trs[tr].amount;
+              }
+          }
+
+          console.log("tags : " + tags);
+
+          var keys = [];
+          var values = [];
+
+          for(var i in tags) {
+              keys.push(i);
+              values.push(tags[i]);
+          }
+          console.log("labs : " + keys);
+          console.log("labs : " + values);
+
+          $scope.data.labels = keys;
+          $scope.data.data = values;
+
+  	};
+
+
+	$scope.showBalance = function(){
 		budgetService.getBudget().then(
 			function(success){
+				var chart = document.getElementById("canvasChart");
+				chart.setAttribute("style", chart.getAttribute("style") + " display:hidden;");
+
+        var balance = document.getElementById("budgetBalance");
+        balance.setAttribute("style", balance.getAttribute("style") + " display:block;");
+
 				console.log(success.data.response.budgets[0].balance);
 				$scope.balance = success.data.response.budgets[0].balance ;
 				$scope.limit = success.data.response.budgets[0].limit;
 				$scope.period = success.data.response.budgets[0].period;
 				$scope.spent = success.data.response.budgets[0].spent;
+
+
 			},
 			function(error){
 				console.log(error);
