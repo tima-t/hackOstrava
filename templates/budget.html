@@ -20,17 +20,17 @@
       </canvas>
     </div>
 		<div class="list" id="budgetBalance">
-			<div class="item item-divider listHeader" >
-        {{balance}}
+			<div class="item item-divider listHeader Quango" style="text-align:center; border:none" ng-if='spent' >
+        Balance : {{balance}}  $
       </div>
-			<div class="item item-divider listHeader" >
-        {{limit}}
+			<div class="item item-divider listHeader Quango" style="text-align:center; border:none" ng-if='spent' >
+        Limit : {{limit}} $
       </div>
-			<div class="item item-divider listHeader" >
-        {{period}}
+			<div class="item item-divider listHeader Quango" style="text-align:center; border:none" ng-if='spent' >
+        Period :{{period}}
       </div>
-			<div class="item item-divider listHeader" >
-        {{spent}}
+			<div class="item item-divider listHeader Quango" style="text-align:center; border:none" ng-if='spent' >
+        Spents :{{spent}} $
       </div>
 		</div>
 

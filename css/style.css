@@ -70,6 +70,7 @@
 
 .inputsT{
 	padding: 20px;
+	font-size: 25px;
 }
 
 body{
@@ -90,12 +91,12 @@ ion-view{
 
 @font-face {
     font-family: Angelina;
-    src: url('../fonts/angelina.TTF');
+    src: url('./fonts/angelina.TTF');
 }
 
 @font-face {
     font-family: Quango;
-    src: url('../fonts/quango.otf');
+    src: url('./fonts/quango.otf');
 }
 
 
@@ -107,7 +108,7 @@ ion-view{
 
 .Angelina{
 	font-family: Angelina;
-	font-size: 20px;
+	font-size: 31px;
 	font-weight: bold;
 }
 
@@ -117,13 +118,13 @@ ion-view{
  }
 
 /*Set the background to transparent for ion-item*/
-.custom .item {
+.custom .Angelina {
   background-color: transparent;
   border:none;   /*Removes all borders*/
   border-top: 1px solid;   /*Top Border for each menu item*/
   border-bottom:2px solid;   /*Bottom border for each menu item*/
   border-color: #FFD800;   /*Sets colors for top and bottom border*/
-  color: ;    /*Text color for each item*/
+	text-color: blue!important ;    /*Text color for each item*/
 }
 
 /*Changes the border for the last item*/
