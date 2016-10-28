@@ -148,3 +148,30 @@ var services = angular.module('starter.services',[])
         }
     }
 })
+
+.service('budgetService',function(api,$q,$http){
+	return{
+		getBudget: function() {
+				var deferred = $q.defer();
+				var promise = deferred.promise;
+				var req =
+				{
+					method: 'Get',
+					url: api + "budgets/",
+					params: {
+						'token': window.localStorage.getItem('token')
+					},
+					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+				}
+				$http(req).then(
+					function(resp){
+						console.log(resp);
+						deferred.resolve(resp);
+					},
+					function(resp){
+						deferred.reject(resp);
+					});
+				return promise;
+		}
+	}
+})
