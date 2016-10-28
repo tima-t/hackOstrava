@@ -1,13 +1,29 @@
 <ion-view view-title="Balance">
   <ion-content>
 
-    <canvas id="pie" class="chart chart-pie"
-            chart-data="data.data" chart-labels="data.labels" chart-options="options">
-    </canvas>
+    <div id="canvasChart">
+      <canvas id="pie" class="chart chart-pie"
+              chart-data="data.data" chart-labels="data.labels" chart-options="options">
+      </canvas>
+    </div>
 
-   <div>{{balance}}</div>
-   <div>{{limit}}</div>
-   <div>{{period}}</div>
-   <div>{{spent}}</div>
+    <div id="budgetBalance">
+      <div>{{balance}}</div>
+      <div>{{limit}}</div>
+      <div>{{period}}</div>
+      <div>{{spent}}</div>
+    </div>
+
+    <div class="item item-input-inset noBorder ">
+      <button class="button button-positive styleSubmitButton darkYellow" ng-click="showChart()">
+        Show chart
+      </button>
+    </div>
+
+    <div class="item item-input-inset noBorder ">
+      <button class="button button-positive styleSubmitButton darkYellow" ng-click="showBalance()">
+        Show Balance
+      </button>
+    </div>
   </ion-content>
 </ion-view>
