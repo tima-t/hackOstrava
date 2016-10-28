@@ -1,29 +1,39 @@
 <ion-view view-title="Balance">
   <ion-content>
+	<div class="row">
+		<div class="col ">
+			<button class="button button-positive button-block Quango" ng-click="showChart()">
+				Show chart
+			</button>
+		</div>
+
+		<div class="col ">
+			<button class="button button-positive button-block Quango" ng-click="showBalance()">
+				Show Balance
+			</button>
+			</div>
+		</div>
 
     <div id="canvasChart">
       <canvas id="pie" class="chart chart-pie"
               chart-data="data.data" chart-labels="data.labels" chart-options="options">
       </canvas>
     </div>
+		<div class="list" id="budgetBalance">
+			<div class="item item-divider listHeader" >
+        {{balance}}
+      </div>
+			<div class="item item-divider listHeader" >
+        {{limit}}
+      </div>
+			<div class="item item-divider listHeader" >
+        {{period}}
+      </div>
+			<div class="item item-divider listHeader" >
+        {{spent}}
+      </div>
+		</div>
 
-    <div id="budgetBalance">
-      <div>{{balance}}</div>
-      <div>{{limit}}</div>
-      <div>{{period}}</div>
-      <div>{{spent}}</div>
-    </div>
 
-    <div class="item item-input-inset noBorder ">
-      <button class="button button-positive styleSubmitButton darkYellow" ng-click="showChart()">
-        Show chart
-      </button>
-    </div>
-
-    <div class="item item-input-inset noBorder ">
-      <button class="button button-positive styleSubmitButton darkYellow" ng-click="showBalance()">
-        Show Balance
-      </button>
-    </div>
   </ion-content>
 </ion-view>

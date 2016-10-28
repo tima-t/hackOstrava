@@ -139,7 +139,7 @@ angular.module('starter.controllers', [])
   	$scope.showChart = function() {
 
           var balance = document.getElementById("budgetBalance");
-          balance.style.display.="none";
+          balance.style.display="none";
 
   	      var chart = document.getElementById("canvasChart");
     			chart.style.display="block";
@@ -182,11 +182,11 @@ angular.module('starter.controllers', [])
 	$scope.showBalance = function(){
 		budgetService.getBudget().then(
 			function(success){
-				var chart = document.getElementById("canvasChart");
-				chart.setAttribute("style", chart.getAttribute("style") + " display:hidden;");
+				var balance = document.getElementById("budgetBalance");
+				balance.style.display="block";
 
-        var balance = document.getElementById("budgetBalance");
-        balance.setAttribute("style", balance.getAttribute("style") + " display:block;");
+				var chart = document.getElementById("canvasChart");
+				chart.style.display="none";
 
 				console.log(success.data.response.budgets[0].balance);
 				$scope.balance = success.data.response.budgets[0].balance ;
