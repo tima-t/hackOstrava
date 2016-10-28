@@ -139,10 +139,10 @@ angular.module('starter.controllers', [])
   	$scope.showChart = function() {
 
           var balance = document.getElementById("budgetBalance");
-          balance.setAttribute("style", balance.getAttribute("style") + " display:hidden;");
+          balance.style.display.="none";
 
   	      var chart = document.getElementById("canvasChart");
-    			chart.setAttribute("style", chart.getAttribute("style") + " display:block;");
+    			chart.style.display="block";
 
   	      var trs = $scope.data.transactions;
           var tags = {};

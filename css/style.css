@@ -84,6 +84,7 @@ ion-view{
 	background-color: #FFD800;
 }
 .item{
+	color:#587058;
 	background-color: #FFD800!important;
 }
 
@@ -108,4 +109,36 @@ ion-view{
 	font-family: Angelina;
 	font-size: 20px;
 	font-weight: bold;
+}
+
+.custom {
+  background-color: #3f4041 !important; /* This sets the background color*/
+	font-family: Quango !important;
+ }
+
+/*Set the background to transparent for ion-item*/
+.custom .item {
+  background-color: transparent;
+  border:none;   /*Removes all borders*/
+  border-top: 1px solid;   /*Top Border for each menu item*/
+  border-bottom:2px solid;   /*Bottom border for each menu item*/
+  border-color: #FFD800;   /*Sets colors for top and bottom border*/
+  color: ;    /*Text color for each item*/
+}
+
+/*Changes the border for the last item*/
+.custom .item:last-child {
+  border-bottom: 1px solid #666;
+}
+
+.custom .item-complex .item-content, .dark .item-radio .item-content {
+  background-color: transparent;
+}
+
+/*Just makes the type white*/
+.custom h2,
+.custom h3,
+.custom p,
+.custom a {
+  color: white;  /*Text color for each item, overrides the color property above*/
 }
