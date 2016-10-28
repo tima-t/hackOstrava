@@ -25,7 +25,6 @@ angular.module('starter.controllers', [])
   $scope.currTag = "";
 
   $scope.isNewTag = function(transaction) {
-    console.log(transaction);
       if(transaction.tags != $scope.currTag) {
           $scope.currTag = transaction.tags;
           return true;
@@ -38,11 +37,8 @@ angular.module('starter.controllers', [])
 		TransactionsService.getLatest()
 		.then(
 			function(dataTrans) {
-				console.log(dataTrans);
 				sharedResource.addItem('numTransactions',dataTrans.numTransactions);
 				sharedResource.addItem('transactions', dataTrans.transactions);
-				console.log(sharedResource.list());
-				console.log();
 				$scope.data.numTransactions = dataTrans.numTransactions;
 				$scope.data.transactions = dataTrans.transactions;
 			},
@@ -54,6 +50,9 @@ angular.module('starter.controllers', [])
 })
 .controller('addTransCtrl', function($scope,$state,sharedResource,$ionicPopup,$ionicTabsDelegate,$ionicLoading,TransactionsService,$cordovaBarcodeScanner,barcodeService,$ionicPopup) {
 	//reload
+
+	$scope.voice="Use Voice";
+
 
 	$scope.$on("$ionicView.beforeEnter", function(event) {
 		$scope.data = {};
@@ -73,7 +72,9 @@ angular.module('starter.controllers', [])
 	      )
 	};
 
+
 	$scope.scanBarcode = function() {
+				$scope.recognizedText = "";
         $cordovaBarcodeScanner.scan().then(function(imageData) {
 					console.log(imageData.text);
 					barcodeService.getProduct(imageData.text)
@@ -103,4 +104,25 @@ angular.module('starter.controllers', [])
         });
     };
 
+		$scope.record = function() {
+				var recognition = new SpeechRecognition(); // To Device
+				recognition.lang = 'en-US';
+
+			recognition.onresult = function(event) {
+			if (event.results.length > 0) {
+				var voiceInfo = event.results[0][0].transcript.split(" ");
+				console.log(voiceInfo);
+				$scope.category = voiceInfo[0] || "";
+				$scope.price = voiceInfo[1] || "";
+				var description = "" ;
+				for (var i = 2; i < voiceInfo.length; i++) {
+					description +=  voiceInfo[i] + " ";
+				}
+				$scope.description = description;
+				$scope.$apply();
+				}
+			};
+
+			recognition.start();
+		};
 })
