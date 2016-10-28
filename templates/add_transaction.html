@@ -2,23 +2,39 @@
   <ion-content class="bodyStyle">
     <div class="list">
 
+<<<<<<< HEAD
 
 			<div class="item item-input-inset paddingStCenter noBorder" >
 				<label class="item-input-wrapper">
 					<input type="text" placeholder="Category" ng-model="category">
 				</label>
 			</div>
+=======
       <div class="item item-input-inset paddingStCenter noBorder">
         <label class="item-input-wrapper">
-          <input type="text" placeholder="Price" ng-model="price">
+          <input type="text" placeholder="Description" ng-model="data.description">
         </label>
       </div>
+>>>>>>> f12268503aabb58b01b70a7f172b75ca3add7388
+      <div class="item item-input-inset paddingStCenter noBorder">
+        <label class="item-input-wrapper">
+          <input type="text" placeholder="Price" ng-model="data.price">
+        </label>
+      </div>
+<<<<<<< HEAD
 			<div class="item item-input-inset paddingStCenter noBorder">
 				<label class="item-input-wrapper">
 					<input type="text" placeholder="Description" ng-model="description">
 				</label>
 			</div>
 
+=======
+      <div class="item item-input-inset paddingStCenter noBorder">
+        <label class="item-input-wrapper">
+          <input type="text" placeholder="Category" ng-model="data.category">
+        </label>
+      </div>
+>>>>>>> f12268503aabb58b01b70a7f172b75ca3add7388
       <div class="item item-input-inset noBorder row">
         <div class="col col-20 col-offset-20">
           <button class="button button-positive lightBlue noMinHeight" ng-click="scanBarcode()">
@@ -33,7 +49,7 @@
         </div>
       </div>
       <div class="item item-input-inset noBorder ">
-        <button class="button button-positive styleSubmitButton darkYellow">
+        <button class="button button-positive styleSubmitButton darkYellow" ng-click="addTransaction()">
           Submit
         </button>
       </div>
