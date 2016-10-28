@@ -67,3 +67,11 @@
 .noBorder {
       border-style: none;
 }
+
+.inputsT{
+	padding: 20px;
+}
+
+body{
+	background-color: #FFD800;
+}

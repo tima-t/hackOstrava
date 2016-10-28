@@ -112,17 +112,41 @@ angular.module('starter.controllers', [])
 			if (event.results.length > 0) {
 				var voiceInfo = event.results[0][0].transcript.split(" ");
 				console.log(voiceInfo);
-				$scope.category = voiceInfo[0] || "";
-				$scope.price = voiceInfo[1] || "";
+				$scope.data.category = voiceInfo[0] || "";
+				$scope.data.price = voiceInfo[1] || "";
 				var description = "" ;
 				for (var i = 2; i < voiceInfo.length; i++) {
 					description +=  voiceInfo[i] + " ";
 				}
-				$scope.description = description;
+				$scope.data.description = description;
 				$scope.$apply();
 				}
 			};
 
 			recognition.start();
 		};
+})
+
+.controller('budgetCtrl', function($scope,$state,sharedResource,$ionicPopup,$ionicTabsDelegate,$ionicLoading,budgetService) {
+	$scope.$on("$ionicView.beforeEnter", function(event) {
+	  $scope.init();
+		$scope.data={};
+		$scope.data.numTransactions = sharedResource.getItem('numTransactions');
+		$scope.data.transactions = sharedResource.getItem('transactions');
+	})
+
+	$scope.init = function(){
+		budgetService.getBudget().then(
+			function(success){
+				console.log(success.data.response.budgets[0].balance);
+				$scope.balance = success.data.response.budgets[0].balance ;
+				$scope.limit = success.data.response.budgets[0].limit;
+				$scope.period = success.data.response.budgets[0].period;
+				$scope.spent = success.data.response.budgets[0].spent;
+			},
+			function(error){
+				console.log(error);
+			}
+		)
+	}
 })
