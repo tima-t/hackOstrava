@@ -16,6 +16,7 @@ angular.module('starter.controllers', [])
 .controller('transactionsCtrl', function($scope,$state,sharedResource,$ionicPopup,$ionicTabsDelegate,$ionicLoading,TransactionsService) {
 	//reload
 	$scope.$on("$ionicView.beforeEnter", function(event) {
+	  $scope.init();
 		$scope.data={};
 		$scope.data.numTransactions = sharedResource.getItem('numTransactions');
 		$scope.data.transactions = sharedResource.getItem('transactions');
@@ -53,6 +54,25 @@ angular.module('starter.controllers', [])
 })
 .controller('addTransCtrl', function($scope,$state,sharedResource,$ionicPopup,$ionicTabsDelegate,$ionicLoading,TransactionsService,$cordovaBarcodeScanner,barcodeService,$ionicPopup) {
 	//reload
+
+	$scope.$on("$ionicView.beforeEnter", function(event) {
+		$scope.data = {};
+	})
+
+	$scope.addTransaction = function() {
+	      console.log($scope);
+	      TransactionsService.addNew($scope.data.description, $scope.data.price, $scope.data.category)
+	      .then(
+	            function(dataTrans) {
+        				  console.log(dataTrans);
+        				  $state.go('app.review_transactions');
+        			},
+        			function (errorTrans) {
+        				  console.log('trans error');
+        			}
+	      )
+	};
+
 	$scope.scanBarcode = function() {
         $cordovaBarcodeScanner.scan().then(function(imageData) {
 					console.log(imageData.text);
@@ -61,8 +81,8 @@ angular.module('starter.controllers', [])
 						function(data){
 							if (data.valid == 'true') {
 								console.log(data + "valid bar");
-								$scope.description = data.description;
-								$scope.price = data.avg_price;
+								$scope.data.description = data.description;
+								$scope.data.price = data.avg_price;
 							}
 							else{
 									console.log(data + "valid bar");

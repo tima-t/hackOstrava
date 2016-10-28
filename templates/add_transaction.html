@@ -4,17 +4,17 @@
 
       <div class="item item-input-inset paddingStCenter noBorder">
         <label class="item-input-wrapper">
-          <input type="text" placeholder="Description" ng-model="description">
+          <input type="text" placeholder="Description" ng-model="data.description">
         </label>
       </div>
       <div class="item item-input-inset paddingStCenter noBorder">
         <label class="item-input-wrapper">
-          <input type="text" placeholder="Price" ng-model="price">
+          <input type="text" placeholder="Price" ng-model="data.price">
         </label>
       </div>
       <div class="item item-input-inset paddingStCenter noBorder">
         <label class="item-input-wrapper">
-          <input type="text" placeholder="Category">
+          <input type="text" placeholder="Category" ng-model="data.category">
         </label>
       </div>
       <div class="item item-input-inset noBorder row">
@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="item item-input-inset noBorder ">
-        <button class="button button-positive styleSubmitButton darkYellow">
+        <button class="button button-positive styleSubmitButton darkYellow" ng-click="addTransaction()">
           Submit
         </button>
       </div>

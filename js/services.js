@@ -39,8 +39,45 @@ var services = angular.module('starter.services',[])
         }
     }
 })
-.service('TransactionsService',function(api,$q,$http) {
+.service('TransactionsService',function(api,$q,$http,$httpParamSerializerJQLike) {
     return {
+
+        addNew: function(description, price, category) {
+            var deferred = $q.defer();
+                        var promise = deferred.promise;
+            						var req =
+            						{
+             							method: 'Post',
+             							url: api+'add_transaction?token=' + window.localStorage.getItem('token'),
+             							data:
+                          								$httpParamSerializerJQLike({
+                                					"format":"sms",
+                          								"text":description + " " + price + " tags:" + category
+                          }),
+            							headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            						}
+            						$http(req).then(
+            							function(resp){
+            							  console.log(req);
+            								console.log(resp.data.response);
+            								if(resp.data.response && resp.data.response.status == 'OK'){
+            									console.log("response");
+
+            								  if(resp.data.response.parseStatus == 'success')  {
+            									      deferred.resolve(resp.data.response);
+            									}
+            								}
+            								else{
+            									console.log(error);
+            									console.log("error");
+            								deferred.reject(resp.data);
+            								}
+            							},
+            							function(resp){
+            								deferred.reject(resp.data);
+            							});
+                        return promise;
+        },
 
         getLatest: function() {
             var deferred = $q.defer();
