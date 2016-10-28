@@ -48,6 +48,49 @@ angular.module('starter.controllers', [])
 		)
 	}
 })
+
+.controller('budgetCtrl', function($scope,$state,sharedResource,$ionicPopup,$ionicTabsDelegate,$ionicLoading,TransactionsService,$cordovaBarcodeScanner,barcodeService,$ionicPopup) {
+
+      $scope.data={};
+
+	$scope.$on("$ionicView.beforeEnter", function(event) {
+      $scope.data.numTransactions = sharedResource.getItem('numTransactions');
+      $scope.data.transactions = sharedResource.getItem('transactions');
+
+       var trs = $scope.data.transactions;
+        var tags = {};
+        var count = 0;
+        var currTag = "";
+
+        for(var tr in trs) {
+
+            currTag = trs[tr].tags;
+
+            if(tags[currTag]){
+                tags[currTag] += trs[tr].amount;
+            }
+            else {
+                tags[currTag] = trs[tr].amount;
+            }
+        }
+
+        console.log("tags : " + tags);
+
+        var keys = [];
+        var values = [];
+
+        for(var i in tags) {
+          keys.push(i);
+          values.push(tags[i]);
+        }
+        console.log("labs : " + keys);
+        console.log("labs : " + values);
+
+        $scope.data.labels = keys;
+        $scope.data.data = values;
+	})
+
+})
 .controller('addTransCtrl', function($scope,$state,sharedResource,$ionicPopup,$ionicTabsDelegate,$ionicLoading,TransactionsService,$cordovaBarcodeScanner,barcodeService,$ionicPopup) {
 	//reload
 
