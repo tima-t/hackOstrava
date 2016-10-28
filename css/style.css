@@ -17,17 +17,8 @@
       padding-right: 9%;
 }
 
-.scanButtonDiv {
-
-      margin-left: 18%;
-}
-
-.scanBarcodeButton {
-      margin-right: 8%;
-}
-
 .noMinHeight {
-    padding: 7px;
+      padding: 7px;
       min-height: 0px;
       line-height: 23px;
 }

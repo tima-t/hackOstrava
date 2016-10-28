@@ -59,7 +59,19 @@ var services = angular.module('starter.services',[])
 								console.log(resp.data.response);
 								if(resp.data.response && resp.data.response.status == 'OK' ){
 									console.log("response");
-									deferred.resolve(resp.data.response);
+
+									function compare(a,b) {
+                                      if (a.tags < b.tags)
+                                        return -1;
+                                      if (a.tags > b.tags)
+                                        return 1;
+                                      return 0;
+                                    }
+
+                                    var response = resp.data.response;
+                                    response.transactions.sort(compare);
+
+									deferred.resolve(response);
 								}
 								else{
 									console.log(error);

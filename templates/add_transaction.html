@@ -17,13 +17,17 @@
           <input type="text" placeholder="Category">
         </label>
       </div>
-      <div class="item item-input-inset noBorder scanButtonDiv">
-        <button class="button button-positive scanBarcodeButton lightBlue noMinHeight" ng-click="scanBarcode()">
-          Scan Barcode
-        </button>
-        <button class="button button-positive lightBlue noMinHeight" >
-          Use Voice
-        </button>
+      <div class="item item-input-inset noBorder row">
+        <div class="col col-20 col-offset-20">
+          <button class="button button-positive lightBlue noMinHeight" ng-click="scanBarcode()">
+            Scan Barcode
+          </button>
+        </div>
+        <div class="col col-20 col-offset-20">
+          <button class="button button-positive lightBlue noMinHeight">
+            Use Voice
+          </button>
+        </div>
       </div>
       <div class="item item-input-inset noBorder ">
         <button class="button button-positive styleSubmitButton darkYellow">
