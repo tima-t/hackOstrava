@@ -75,3 +75,37 @@
 body{
 	background-color: #FFD800;
 }
+
+ion-content{
+	background-color: #FFD800;
+}
+
+ion-view{
+	background-color: #FFD800;
+}
+.item{
+	background-color: #FFD800!important;
+}
+
+@font-face {
+    font-family: Angelina;
+    src: url('../fonts/angelina.TTF');
+}
+
+@font-face {
+    font-family: Quango;
+    src: url('../fonts/quango.otf');
+}
+
+
+.Quango{
+	font-family: Quango !important;
+	font-size: 20px !important;
+
+}
+
+.Angelina{
+	font-family: Angelina;
+	font-size: 20px;
+	font-weight: bold;
+}
