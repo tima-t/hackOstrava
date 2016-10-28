@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers','starter.services','ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers','starter.services','ngCordova', 'chart.js'])
 
 .run(function($ionicPlatform) {
 
@@ -58,7 +58,7 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services','ng
       views: {
         'menuContent': {
           templateUrl: 'templates/budget.html',
-					controller:'budgetCtrl'
+          controller: 'budgetCtrl'
         }
       }
     })
