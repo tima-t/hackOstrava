@@ -2,21 +2,23 @@
   <ion-content class="bodyStyle">
     <div class="list">
 
-      <div class="item item-input-inset paddingStCenter noBorder">
-        <label class="item-input-wrapper">
-          <input type="text" placeholder="Description" ng-model="description">
-        </label>
-      </div>
+
+			<div class="item item-input-inset paddingStCenter noBorder" >
+				<label class="item-input-wrapper">
+					<input type="text" placeholder="Category" ng-model="category">
+				</label>
+			</div>
       <div class="item item-input-inset paddingStCenter noBorder">
         <label class="item-input-wrapper">
           <input type="text" placeholder="Price" ng-model="price">
         </label>
       </div>
-      <div class="item item-input-inset paddingStCenter noBorder">
-        <label class="item-input-wrapper">
-          <input type="text" placeholder="Category">
-        </label>
-      </div>
+			<div class="item item-input-inset paddingStCenter noBorder">
+				<label class="item-input-wrapper">
+					<input type="text" placeholder="Description" ng-model="description">
+				</label>
+			</div>
+
       <div class="item item-input-inset noBorder row">
         <div class="col col-20 col-offset-20">
           <button class="button button-positive lightBlue noMinHeight" ng-click="scanBarcode()">
@@ -24,8 +26,9 @@
           </button>
         </div>
         <div class="col col-20 col-offset-20">
-          <button class="button button-positive lightBlue noMinHeight">
-            Use Voice
+					<div ng-if="!!recognizedText">{{recognizedText}}</div>
+          <button class="button button-positive lightBlue noMinHeight" ng-click="record()">
+          {{voice}}
           </button>
         </div>
       </div>

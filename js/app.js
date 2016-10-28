@@ -1,7 +1,9 @@
 angular.module('starter', ['ionic', 'starter.controllers','starter.services','ngCordova'])
 
 .run(function($ionicPlatform) {
+
   $ionicPlatform.ready(function() {
+		var recognition;
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
@@ -11,6 +13,7 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services','ng
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+		
   });
 })
 
