@@ -4,6 +4,40 @@
       padding-top: 80px;
 }
 
+.displayInline {
+      display: inline;
+}
+
+.leftDiv {
+      width: 80%;
+      float: left;
+}
+
+.rightDiv {
+      width: 20%;
+      float: right;
+}
+
+.listHeader {
+    margin: 0px;
+    padding-left: 25%;
+    font-size: 28px;
+    background-color: #11c1f3!important;
+}
+
+.marginBottom0 {
+
+    margin-bottom: 0px;
+
+}
+
+.listItem {
+    padding-left: 6%;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-style: italic!important;
+}
+
 .paddingStCenter {
       padding-top: 10px;
       padding-bottom: 10px;

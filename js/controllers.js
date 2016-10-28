@@ -21,6 +21,16 @@ angular.module('starter.controllers', [])
 		$scope.data.transactions = sharedResource.getItem('transactions');
 	})
 
+  $scope.currTag = "";
+
+  $scope.isNewTag = function(transaction) {
+    console.log(transaction);
+      if(transaction.tags != $scope.currTag) {
+          $scope.currTag = transaction.tags;
+          return true;
+      }
+      return false;
+  }
 
 	$scope.init = function(){
 		$scope.data={};

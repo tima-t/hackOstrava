@@ -1,12 +1,21 @@
 <ion-view view-title="Review Transaction" ng-init="init()">
   <ion-content>
-      <h1>Review Transaction</h1>
-			<div class='center sentenceWrapper' ng-repeat="transaction in data.transactions">
-					<h2 class="mainCont" style="font-size:30px!important;" ><i>{{transaction.description}}</i></h2>
-					<p class= "mainCont" style="font-size:20px!important;">{{transactions.noramlizedDate}}</p>
-					<p class= "mainCont" style="font-size:20px!important;">Rating: {{transaction.type}}</p>
-					<p class= "mainCont" style="font-size:20px!important;">Rating: {{transaction.tags}}</p>
-					<p class= "mainCont" style="font-size:20px!important;">Rating: {{transaction.amount}}</p>
-			</div>
-		 </ion-content>
+
+    <div class="list center marginBottom0" ng-repeat="transaction in data.transactions">
+
+      <div class="item item-divider listHeader" ng-if="isNewTag(transaction)">
+        {{transaction.tags}}
+      </div>
+
+      <a class="item noBorder listItem" href="#">
+        <div class="displayInline center leftDiv">
+          <i>{{transaction.description}}</i>
+        </div>
+        <div class="displayInline center rightDiv">
+          {{transaction.amount | number:2}} $
+        </div>
+      </a>
+
+    </div>
+  </ion-content>
 </ion-view>
