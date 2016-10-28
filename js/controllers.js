@@ -41,14 +41,33 @@ angular.module('starter.controllers', [])
 		)
 	}
 })
-.controller('addTransCtrl', function($scope,$state,sharedResource,$ionicPopup,$ionicTabsDelegate,$ionicLoading,TransactionsService,$cordovaBarcodeScanner) {
+.controller('addTransCtrl', function($scope,$state,sharedResource,$ionicPopup,$ionicTabsDelegate,$ionicLoading,TransactionsService,$cordovaBarcodeScanner,barcodeService,$ionicPopup) {
 	//reload
 	$scope.scanBarcode = function() {
         $cordovaBarcodeScanner.scan().then(function(imageData) {
-            alert(imageData.text);
-            console.log("Barcode Format -> " + imageData.format);
-            console.log("Cancelled -> " + imageData.cancelled);
-						console.log(imageData);
+					console.log(imageData.text);
+					barcodeService.getProduct(imageData.text)
+					.then(
+						function(data){
+							if (data.valid == 'true') {
+								console.log(data + "valid bar");
+								$scope.description = data.description;
+								$scope.price = data.avg_price;
+							}
+							else{
+									console.log(data + "valid bar");
+								var alertPopup = $ionicPopup.alert({
+									title: 'Warning!',
+									template: ("No info about this product")
+								});
+							}
+						},
+						function(error){
+							console.log(error);
+						}
+
+					)
+
         }, function(error) {
             console.log("An error happened -> " + error);
         });

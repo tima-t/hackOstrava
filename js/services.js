@@ -73,4 +73,29 @@ var services = angular.module('starter.services',[])
             return promise;
         }
     }
-});
+})
+
+.service('barcodeService',function(api,$q,$http,apiBarcode) {
+    return {
+
+        getProduct: function(code) {
+            var deferred = $q.defer();
+            var promise = deferred.promise;
+						var req =
+						{
+ 							method: 'Get',
+ 							url: apiBarcode+code,
+							headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+						}
+						$http(req).then(
+							function(resp){
+								console.log(resp);
+								deferred.resolve(resp.data);
+							},
+							function(resp){
+								deferred.reject(resp.data);
+							});
+            return promise;
+        }
+    }
+})
